@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Recipe>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name </th>
+            <th> Recipe Name </th>
+            <th> Status </th>
+            <th> Created Date </th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.Fname @item.User.Lname</td>
+                <td>@item.RecipeName</td>
+                <td>@item.Status</td>
+                <td>@item.CreatedDate</td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>

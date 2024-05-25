@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Contact>
+@{
+    Layout = "~/Views/Shared/_AdminLayout";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email </th>
+            <th> Text </th>
+         
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>@item.Email</td>
+                <td>@item.Text</td>
+               
+
+            </tr>
+        }
+
+    </tbody>
+</table>

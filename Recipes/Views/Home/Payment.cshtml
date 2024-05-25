@@ -1,0 +1,51 @@
+﻿@model Payment
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+<section>
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9 col-lg-7 col-xl-5">
+                <div class="card">
+                    
+                    <form asp-action="Payment" method="post">
+                        @* <input type="hidden" asp-for="@Model.re" /> *@
+                        <div class="rounded-bottom bg-body-tertiary">
+                            <div class="card-body">
+                                <p class="mb-4">Your payment details</p>
+
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <label class="form-label" for="formControlLgXM8">Card Number</label>
+                                    <input asp-for="CardNumber" type="text" id="formControlLgXM8" 
+                                    class="form-control"placeholder="1234 5678 1234 5678" />
+                                    
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label" for="formControlLgExpk8">Expire date</label>
+                                            <input asp-for="ExDate" type="date" id="formControlLgExpk8" class="form-control"
+                                                   placeholder="MM/YYYY" />
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label" for="formControlLgcvv8">Cvv</label>
+                                            <input asp-for="Ccv" type="text" id="formControlLgcvv8" class="form-control" placeholder="Cvv" />
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-block">Order now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

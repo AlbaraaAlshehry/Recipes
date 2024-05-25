@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Recipes.Models.Home>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    table tr th:nth-child(2),
+    table tr td:nth-child(2) {
+        width: 20px; /* Set the desired width */
+    }
+</style>
+<h1>Index</h1>
+
+<p>
+  
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeroImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeParagraph)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipesImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutParagraph)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FooterAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeroImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeParagraph)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipesImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutParagraph)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FooterAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

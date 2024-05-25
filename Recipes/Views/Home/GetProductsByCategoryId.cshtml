@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Recipe>
+@{
+    Layout = "~/views/shared/_Homelayout.cshtml";
+}
+<style>
+    .CategoryImg {
+        width: 275px;
+        height: 183px;
+    }
+
+    body {
+        color: antiquewhite
+    }
+</style>
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+       
+
+              
+          
+                <div class="row">
+
+                  @foreach (var item in Model)
+            { 
+                  
+
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="single_blog_item">
+                                        <div class="single_blog_img">
+                                            <img src=@Url.Content("~/Images/" + item.ImagePath) asp-append-version="true" class="menu-img" alt="category img">
+                                        </div>
+                                        
+                                            <h3>@item.Category.CategoryName</h3>
+                                        <h3>@item.Descreption</h3>
+                                        <h3>@item.Price</h3>
+                                            <p>WORLD RECIPES </p>
+                                        <a asp-controller="Home" asp-action="Payment" asp-route-id="@item.Id" asp-route-id="@item.Price" style="background-color:white" class="btn_3">Buy <img src="~/Home/img/icon/left_1.svg" alt=""></a>
+                                        
+                                    </div>
+                                </div>
+            }
+                        </div>
+    </div>
+        
+    
+    </section>
+    
+
+

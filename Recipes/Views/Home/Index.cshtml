@@ -1,0 +1,239 @@
+﻿@model Tuple<IEnumerable<Category>, IEnumerable< Tetstimonial >, IEnumerable<Recipe> ,IEnumerable<UserLogin>>
+@* item1 == category , item2 == user , item3 == recipe  *@
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<style>
+    .CategoryImg{
+        width:275px;
+        height:183px;
+
+    }
+    body{
+        color:antiquewhite
+    }
+</style>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>Welcome to <span>WORLD`S RECIPES</span></h1>
+                <h2>@ViewBag.heroParagraph.HomeParagraph</h2>
+                
+               @*  <div class="btns">
+                    <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Recipes</a>
+
+                </div> *@
+            </div>
+
+
+        </div>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="About" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="about-img">
+                        <img src=@Url.Content("~/Images/" + ViewBag.About.AboutImage) asp-append-version=true alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                    <h3> Welcome to WORLD RECIPES</h3>
+                    <p class="fst-italic">
+                        @ViewBag.About.AboutParagraph
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i>OUR STORY : Founded by a group of food lovers with diverse backgrounds in culinary arts, nutrition, and technology. We started as a small kitchen experiment has blossomed into a vibrant online community, where food enthusiasts of all levels come together to share, learn, and create.  </li>
+                        <li><i class="bi bi-check-circle"></i>OUR MISSION : At WORLD RECIPES, our mission is to empower home cooks and food enthusiasts with the knowledge, skills, and confidence to explore the endless possibilities of cooking. </li>
+                        <li><i class="bi bi-check-circle"></i>WHAT WE OFFER : From mouthwatering recipes curated by our team of culinary experts to helpful cooking tips, technique tutorials, and ingredient guides, WORLD RECIPES is your go-to destination for all things food-related. </li>
+                    </ul>
+                    <p>
+                        Thank you for choosing WORLD RECIPES as your trusted source for delicious recipes and culinary inspiration. We can't wait to embark on this delicious journey with you!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+    
+    <!-- ======= Menu Section ======= -->
+    <section id="category" class="menu section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Our categroy</h2>
+                <p>Check Our Tasty Recipes</p>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+              @*   <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="menu-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        @foreach (var item in Model.Item1)
+                        {
+                            <li> <a asp-route-id="@item.Id">@item.CategoryName</a></li>
+                           
+                        }
+                    </ul>
+            </div> *@
+            </div> 
+
+            <div class="row">
+                @foreach (var item in Model.Item1)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="single_blog_item">
+                            <div class="single_blog_img">
+                                <img src=@Url.Content("~/Images/" + item.ImagePath) asp-append-version="true" class="menu-img" alt="category img">
+                            </div>
+                            <div class="single_blog_text">
+                                <h3>@item.CategoryName</h3>
+                                <p>WORLD RECIPES </p>
+                                <a asp-action="GetProductsByCategoryId" asp-route-id=@item.Id class="btn_3">Read More <img src="~/Home/img/icon/left_2.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+    </section><!-- End Menu Section -->
+    <!-- ======= Specials Section ======= -->
+
+    <!-- ======= Events Section ======= -->
+    <!-- ======= Book A Table Section ======= -->
+    <!-- End Book A Table Section -->
+    <!-- ======= Testimonials Section ======= -->
+    <section id="hero" class="testimonials section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Testimonials</h2>
+                <p>What they're saying about us</p>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model.Item2)
+                    {
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    @item.TestimonialText
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                                <img src=@Url.Content("~/Images/" + item.User.ImagePath) asp-append-version="true" class="testimonial-img" alt="">
+                                <h3>@item.User.Fname @item.User.Lname</h3>
+                               
+                            </div>
+                        </div>
+
+                        <!-- End testimonial item -->
+                    }
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+   
+    <!-- ======= Chefs Section ======= -->
+    <section id="Chefs" class="chefs">
+        <div class="container" data-aos="fade-up">
+           
+            <div class="section-title">
+                <h2>Chefs</h2>
+                <p>Our Proffesional Chefs</p>
+            </div>
+            <div class="row">
+             @foreach (var item in Model.Item4){
+       
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                            <img src=@Url.Content("~/Images/" + item.User.ImagePath) asp-append-version="true" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>@item.User.Fname @item.User.Lname</h4>
+                  
+                </div>
+                                <a asp-action="chefByRecipe" asp-route-id=@item.User.Id class="btn_3">Read More <img src="~/Home/img/icon/left_2.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+            
+
+        }
+
+    </section><!-- End Chefs Section -->
+    <!-- ======= Contact Section ======= -->
+    <section id="Contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Contact Us</p>
+            </div>
+        </div>
+
+
+
+        <div class="container" data-aos="fade-up">
+
+            <div class="row mt-5">
+                <form asp-action="Contact" method="post">
+                <div class="col-lg-4">
+                    <div class="info">
+
+
+                        <div class="open-hours">
+                            <i class="bi bi-clock"></i>
+                            <h4>Contact Us any time</h4>
+
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>info@example.com</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 mt-5 mt-lg-0">
+
+               
+                        <div class="row">
+                            
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" name="text" rows="8" placeholder="Message" required></textarea>
+                        </div>
+                      
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->

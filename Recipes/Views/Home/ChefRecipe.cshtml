@@ -1,0 +1,118 @@
+﻿@model IEnumerable< Recipe>
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+    <p>
+                <a asp-action="CreateRecipe">Create New</a>
+            </p>
+    
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Recipe Name
+            </th>
+            <th>
+                Ingrediandts 
+            </th>
+            <th>
+                Prepration
+            </th>
+            <th>
+                Discreption
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Recipe Image
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Created Date 
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.RecipeName
+                    </td>
+                    <td>
+                        @item.Ingrediients
+                    </td>
+                    <td>
+                        @item.Preparation
+                    </td>
+                    <td>
+                        @item.Descreption
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                                <img src=@Url.Content("~/Images/" + item.ImagePath) asp-append-version="true" class="menu-img" alt="category img">
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        @item.CreatedDate
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+
+           
+        
+      
+   
+</table>
+</div>
+
+@* 
+@* 
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="single_blog_item">
+                                <div class="single_blog_img">
+                                    
+                                </div>
+                                <div class="single_blog_text">
+                                    <h3>Recipe Name : <span>@item.RecipeName</span> </h3>
+                                    <h3>Recipe Ingrediients : <span>@item.Ingrediients</span> </h3>
+                                    <h3>Recipe Preparation : <span>@item.Preparation</span> </h3>
+                                    <h3>Recipe Descreption : <span>@item.Descreption</span> </h3>
+                                    <h3>Recipe Price : <span>@item.Price</span> </h3>
+                                    <h3>Recipe Image  <img src=@Url.Content("~/Images/" + item.ImagePath) asp-append-version="true" class="menu-img" alt="category img"></h3>
+                                    <h3>Recipe Status : <span>@item.Status</span> </h3>
+                                    <h3>Recipe CreatedDate : <span>@item.CreatedDate</span> </h3>
+
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    @* <a asp-action="GetProductsByCategoryId" asp-route-id=@item.Id class="btn_3">Read More <img src="~/Home/img/icon/left_2.svg" alt=""></a> *@
+                        @*         </div>
+                            </div>
+                        </div>
+
+                    } *@
+
+                </div> 
+        </div>
+</section> 

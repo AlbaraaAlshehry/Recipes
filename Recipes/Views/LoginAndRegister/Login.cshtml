@@ -1,0 +1,47 @@
+﻿@model UserLogin
+@{
+    Layout = "~/Views/Shared/_LoginAndRegisterLayout.cshtml";
+}
+<div class="half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/about.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-block">
+                        <div class="text-center mb-5">
+                            <h3>Welcome To <strong>WORLD`S RECIPES</strong></h3>
+                            <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+                            <div class="signin-image">
+
+                                <a asp-controller="LoginAndRegister" asp-action="Index" class="signup-image-link">Create an account</a>
+                            </div>
+
+                        </div>
+                        <form asp-action="Login" method="post">
+
+
+                            <div class="form-group ">
+                                <label for="username">User Name</label>
+                                <input asp-for="UserName" name="userName" type="text" class="form-control" placeholder="User Name" id="username">
+                            </div>
+                            <div class="form-group ">
+                                <label for="password">Password</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Your Password" id="password">
+                            </div>
+                            <!-- Registration.cshtml -->
+
+
+
+                            <div>
+                                <input type="submit" value="Login" class="btn btn-block btn-primary">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

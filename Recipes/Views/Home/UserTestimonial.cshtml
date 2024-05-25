@@ -1,0 +1,26 @@
+﻿@model User 
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+<form action="UserTestimonial" method="post">
+    <input asp-for="Id" type="hidden"/>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <input type="text" asp-for="Fname" class="form-control" id="name" placeholder="Your First Name" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <input type="text" asp-for="Lname" class="form-control" id="name" placeholder="Your Last Name" required>
+        </div>
+        <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" asp-for="Email" id="email" placeholder="Your Email" required>
+        </div>
+    </div>
+    
+    <div class="form-group mt-3">
+           <textarea class="form-control" name="TestimonialText" rows="8" placeholder="Message" required></textarea>
+    </div>
+    <div class="text-center"><button type="submit">Send Message</button></div>
+</form>

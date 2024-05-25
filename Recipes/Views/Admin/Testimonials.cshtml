@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Tetstimonial>
+    @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name </th>
+            <th>Email</th>
+            <th>Created Date</th>
+            <th>Status</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.Fname @item.User.Lname</td>
+                <td>@item.User.Email</td>
+
+                
+                <td>
+                    <form asp-action="Testimonials" method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="hidden" name="status" value="Accepted" />
+                    <button type="submit">Accept</button>
+                </form>
+                    <form asp-action="Testimonials" method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="hidden" name="status" value="Rejected" />
+                    <button type="submit">Reject</button>
+                </form>
+                </td>
+                <td>@item.TestimonialText</td>
+                <td>@item.CreatedDate</td>
+                
+            </tr>
+        }
+
+    </tbody>
+</table>
